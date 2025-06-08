@@ -8,10 +8,6 @@
   "functions": [
     {
       "source": "functions",
-      "codebase": "default"
-    },
-    {
-      "source": "faas-functions",
       "codebase": "functions",
       "ignore": [
         "node_modules",

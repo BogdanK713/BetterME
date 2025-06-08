@@ -1,42 +1,539 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+/* ============================
+   Global Resets & Typography
+   ============================ */
+body {
+  margin: 0;
+  font-family: 'Inter', Arial, sans-serif;
+  background: #F8FAFF;
+  color: #22223B;
+}
+a {
+  color: #7C83FD;
+  text-decoration: none;
+}
+h2{
+  font-size: 18.72px;
+}
+h1{
+  font-size: 24px;
+  align-self: center;
+  margin-top: 22px;
+}
+/* ============================
+   Buttons
+   ============================ */
+button {
+  background: #A0E7E5;
+  color: #232946;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .13s, color .13s;
+  box-shadow: 0 1px 5px #A0E7E511;
+}
+button:hover {
+  background: #7C83FD;
+  color: #fff;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
+/* ============================
+   Card Component
+   ============================ */
 .card {
-  padding: 2em;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 4px 18px #0001;
+  padding: 2.2rem 2.8rem;
+  margin: 0 auto 2rem auto;
+  width: 100%;
+  max-width: 900px;
+  transition: box-shadow 0.2s;
+}
+.card h2,
+.card h3 {
+  margin-top: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
-.read-the-docs {
+/* ============================
+   Layout Containers
+   ============================ */
+.main-app-content {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  min-height: 84vh;
+}
+.main-app-content > div {
+  width: 100%;
+  max-width: 1400px;
+  min-width: 340px;
+}
+
+/* ============================
+   Inputs & Textareas
+   ============================ */
+input,
+select,
+textarea {
+  font-size: 1rem;
+  border: 1.5px solid #A0E7E5;
+  border-radius: 8px;
+  padding: 0.54em 1em;
+  background: #f8faff;
+  color: #232946;
+  box-shadow: 0 1px 6px #A0E7E522;
+  transition: border 0.14s, box-shadow 0.14s;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #7C83FD;
+  border-color: #7C83FD;
+  background: #fff;
+}
+textarea {
+  min-height: 40px;
+  resize: vertical;
+}
+
+/* ============================
+   Custom File Input
+   ============================ */
+.custom-file-label {
+  display: inline-block;
+  background: #A0E7E5;
+  color: #232946;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.58em 1.3em;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 1px 5px #A0E7E522;
+  transition: background 0.16s, color 0.16s;
+  margin-bottom: 0.5em;
+}
+.custom-file-label:hover {
+  background: #7C83FD;
+  color: #fff;
+}
+.custom-file-input {
+  display: none;
+}
+
+/* ============================
+   Album Tabs
+   ============================ */
+.album-tab,
+.album-tab-selected {
+  background: #eee;
+  color: #333;
+  border-radius: 8px;
+  padding: 0.36em 1em;
+  margin-right: 7px;
+  font-weight: 500;
+  border: none;
+  box-shadow: none;
+  transition: background .16s, color .16s;
+}
+.album-tab-selected {
+  background: #7C83FD;
+  color: #fff;
+  box-shadow: 0 2px 8px #A0E7E555;
+}
+nav a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* ============================
+   Responsive Tweaks
+   ============================ */
+@media (max-width: 1000px) {
+  .main-app-content > div,
+  .card {
+    max-width: 98vw;
+  }
+}
+@media (max-width: 900px) {
+  .card {
+    padding: 1.3rem 0.8rem;
+  }
+  .main-app-content {
+    padding: 1.2rem 0.4rem !important;
+  }
+}
+@media (max-width: 700px) {
+  .card {
+    padding: 0.85rem 0.18rem;
+  }
+  .main-app-content {
+    padding: 0.2rem 0.01rem !important;
+  }
+}
+
+/* ============================
+   Placeholder Styling
+   ============================ */
+::-webkit-input-placeholder { color: #888 !important; opacity: 1; }
+::-moz-placeholder { color: #888 !important; opacity: 1; }
+:-ms-input-placeholder { color: #888 !important; opacity: 1; }
+::placeholder { color: #888 !important; opacity: 1; }
+
+/* ============================
+   Habit Form Row
+   ============================ */
+.habit-form-row {
+  display: flex;
+  gap: 1.1em;
+  align-items: center;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.habit-form-row input[type="time"] {
+  width: 120px;
+}
+.add-habit-btn {
+  margin-top: 0 !important;
+  min-width: 130px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ============================
+   Habit Rows (Listing)
+   ============================ */
+.habit-row {
+  display: flex;
+  align-items: center;
+  gap: 1.1em;
+  border-bottom: 1px solid #f3f3f3;
+  padding: 1em;
+  min-height: 54px;
+  transition: background 0.13s;
+  width: 90%;
+  font-weight: bold;
+}
+.habit-row:last-child {
+  border-bottom: none;
+}
+.habit-check-btn {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin-top: 0;
+  cursor: pointer;
+  transition: opacity 0.12s;
+  display: flex;
+  align-items: center;
+  outline: none;
+  height: 44px;
+}
+.habit-check-btn:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+.habit-main-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 140px;
+  flex: 1 1 170px;
+  max-width: 330px;
+  overflow: hidden;
+}
+.habit-title {
+  font-weight: 700;
+  max-width: 250px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 1.07rem;
+}
+.habit-desc {
   color: #888;
+  font-size: 0.98rem;
+  margin-top: 2px;
+  max-width: 250px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.habit-reminder {
+  min-width: 88px;
+  text-align: left;
+  font-size: 15px;
+}
+.habit-actions {
+  display: flex;
+  gap: 0.45em;
+  min-width: 135px;
+}
+.habit-streak {
+  min-width: 98px;
+  text-align: right;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+/* ============================
+   Habit Edit Row
+   ============================ */
+.habit-edit-row {
+  display: flex;
+  gap: 0.8em;
+  align-items: center;
+  width: 100%;
+}
+.habit-edit-row button {
+  min-width: 80px;
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+}
+.habit-edit-row button:last-child {
+  background: #eee !important;
+  color: #555 !important;
+  box-shadow: none !important;
+}
+
+/* ============================
+   Dashboard Habit Title
+   ============================ */
+.dashboard-habit-title {
+  max-width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+  vertical-align: middle;
+}
+@media (max-width: 700px) {
+  .dashboard-habit-title {
+    max-width: 120px;
+    font-size: 0.96em;
+  }
+}
+
+/* ============================
+   Stat Block
+   ============================ */
+.stat-block {
+  flex: 1;
+  min-width: 110px;
+  background: #F4F7FF;
+  border-radius: 12px;
+  padding: 1em;
+  text-align: center;
+  box-shadow: 0 1px 3px #0001;
+  margin-bottom: 10px;
+}
+
+/* ============================
+   Divider (Vertical)
+   ============================ */
+.divider-vert {
+  width: 1.5px;
+  background: #f1f2ff;
+  border-radius: 8px;
+  align-self: stretch;
+  margin: 0 18px;
+}
+@media (max-width: 900px) {
+  .divider-vert {
+    display: none;
+  }
+}
+
+/* ============================
+   Calendar Card
+   ============================ */
+
+.calendar-days-row {
+  position: relative;
+  display: flex;
+  overflow-x: auto !important;
+  gap: 0.14em;
+  margin-bottom: 1.6em;
+  padding-bottom: 6px;
+  width: 100%;
+  border-left:solid;
+  border-right:solid;
+  border-color: rgb(160, 231, 229);
+  scrollbar-width: thin;  -ms-overflow-style: none;  
+}
+
+
+.calendar-days-row::-webkit-scrollbar {
+  height: 6px;
+}
+.calendar-days-row:hover {
+  scrollbar-width: thin;
+  -ms-overflow-style: auto;
+}
+
+.calendar-days-row:hover::-webkit-scrollbar-thumb {
+  background: rgba(124,131,253,0.6);
+  border-radius: 3px;
+}
+.calendar-days-row::-webkit-scrollbar-track {
+  background: transparent;
+}
+.calendar-days-row::-webkit-scrollbar-thumb {
+  background: rgba(124,131,253,0.4);
+  border-radius: 3px;
+}
+
+/* ============================
+   Calendar Dates
+   ============================ */
+.calendar-date-btn {
+  border: none;
+  background: rgb(236, 235, 255);
+  border-radius: 18px;
+  margin: 9px;
+  padding: 18px 28px 14px;
+  font-size: 1.28rem;
+  cursor: pointer;
+  transition: background 0.13s, color 0.13s, box-shadow 0.12s;
+  outline: none;
+  text-align: center;
+  min-width: 94px;
+  min-height: 94px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.calendar-date-selected {
+  background: #A0E7E5 !important;
+  color: #232946 !important;
+  font-weight: 700;
+  box-shadow: 0 0 0 3px #4cd96444, 0 3px 16px #a0e7e577;
+  border: 2px solid #4cd964;
+}
+.calendar-date-btn.calendar-date-selected {
+  box-shadow: 0 0 0 3px #4cd96444, 0 3px 16px #a0e7e577;
+}
+.calendar-date-btn:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* ============================
+   Calendar Habit Rows
+   ============================ */
+.calendar-habit-row {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 6px;
+  padding: 10px 20px 10px 20px;
+}
+.calendar-habit-text {
+  flex: 1;                     
+  min-width: 0;               
+  white-space: nowrap;       
+  overflow: hidden;         
+  text-overflow: ellipsis;     
+  font-size: 16px;
+}
+.calendar-habit-dot {
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 4px;
+  box-sizing: border-box;
+}
+.calendar-habit-checked {
+  color: #4cd964;
+  font-weight: 700;
+}
+
+.calendar-scroll .scroll-fade-list {
+  padding: 0;  
+  margin: 0;
+  list-style: none;
+  overflow-y: auto;
+  height: 100%;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+
+/* ============================
+   Scrollable Fade Containers
+   ============================ */
+.scroll-container {
+  position: relative;
+}
+.scroll-container.scrolled-to-top::before {
+  opacity: 0;
+}
+.scroll-container.scrolled-to-bottom::after {
+  opacity: 0;
+}
+.scroll-container::before,
+.scroll-container::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 32px;
+  pointer-events: none;
+  z-index: 2;
+  transition: opacity .2s;
+}
+.scroll-container::before {
+  top: 0;
+  background: linear-gradient(
+    to bottom,
+    rgb(241, 240, 255),
+    rgba(248,250,255,0) 100%
+  );
+}
+.scroll-container::after {
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgb(241, 240, 255),
+    rgba(248,250,255,0) 100%
+  );
+}
+
+.scroll-fade-list {
+  margin: 0;
+  padding: 0 0 32px;
+  list-style: none;
+  overflow-y: auto;
+  max-height: 280px;
+  scrollbar-width: none !important;           
+  -ms-overflow-style: none !important; 
+}
+.card {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(124,131,253,0.4) transparent;
+}
+
+.card::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card::-webkit-scrollbar-thumb {
+  background: rgba(124,131,253,0.4);
+  border-radius: 3px;
+  transition: background 0.2s;
+}
+
+.card:hover::-webkit-scrollbar-thumb {
+  background: rgba(124,131,253,0.6);
 }
